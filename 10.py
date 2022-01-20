@@ -7,27 +7,22 @@ Created on Thu Jan 20 19:15:32 2022
 #%%
 def maxArea(height):
         number = []
-        for i in height:
-            for j in height:
-                if i < j:
-                    number.append(i*abs(height.index(j)-height.index(i)))
-                elif i > j:
-                    number.append(j*abs(height.index(j)-height.index(i)))
+        for i in range(len(height)):
+            for j in range(len(height)):
+                if height[i] < height[j]:
+                    number.append(height[i]*abs(i-j))
                 else:
-                    pass
+                    number.append(height[j]*abs(i-j))
         return print(max(number))
-maxArea([1,8,6,2,5,4,8,3,7])
+maxArea([1,1])
 #%%
 class Solution:
     def maxArea(self, height):
         number = []
-        for i in height:
-            for j in height:
-                if i < j:
-                    number.append(i*abs(height.index(j)-height.index(i)))
-                elif i > j:
-                    number.append(j*abs(height.index(j)-height.index(i)))
+        for i in range(len(height)):
+            for j in range(len(height)):
+                if height[i] < height[j]:
+                    number.append(height[i]*abs(i-j))
                 else:
-                    pass
+                    number.append(height[j]*abs(i-j))
         return max(number)
-                    
