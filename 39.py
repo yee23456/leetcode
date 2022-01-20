@@ -11,6 +11,18 @@ These are the only two combinations.
 
 @author: 沈睿朋
 """
-
-def combinationSum(self, candidates, target):
-    
+#%%
+a = [2,3,6,7]
+for i in range(len(a)):
+    b = [sum(a[j:i+1]) for j in range(i+1)]
+print(b)
+#%%
+def combinationSum(candidates, target):
+    function = []
+    if target in candidates:
+        function.append([target])
+    for i in range(len(candidates)):
+        if [sum(a[j:i+1]) for j in range(i+1)] == target:
+            
+            
+#%%
