@@ -14,15 +14,37 @@ These are the only two combinations.
 #%%
 a = [2,3,6,7]
 for i in range(len(a)):
-    b = [sum(a[j:i+1]) for j in range(i+1)]
-print(b)
+    b = [a[j:i+1] for j in range(i+1)]
+    print(b)
 #%%
-def combinationSum(candidates, target):
-    function = []
-    if target in candidates:
-        function.append([target])
-    for i in range(len(candidates)):
-        if [sum(a[j:i+1]) for j in range(i+1)] == target:
+# candidates = [2,3,6,7]
+# target = 7
+# result = []
+# candidates.sort()
+# def dfs(candidates, target, path):
+#     if target == 0:
+#         result.append(path)
+#     elif not candidates or target < candidates[0]:
+#         return
+#     else:
+#         for i,c in enumerate(candidates):
+#             dfs(candidates[i:], target -c, path+[c])
+#             print(candidates[i:])
+# dfs(candidates, target, [])
+# print(result)
             
-            
-#%%
+#%% 深度優先搜尋 DFS 上網查到別人寫出來的
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        result = []
+        candidates.sort()
+        def dfs(candidates, target, path):
+            if target == 0:
+                result.append(path)
+            elif not candidates or target < candidates[0]:
+                return
+            else:
+                for i,c in enumerate(candidates):
+                    dfs(candidates[i:], target -c, path+[c])
+        dfs(candidates, target, [])
+        return result
